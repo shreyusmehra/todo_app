@@ -11,10 +11,10 @@ const Form = () => {
     category,
     setCategory,
     setStatus,
-    todoList,
-    setTodoList,
     filteredDates,
     dateFilterHandler,
+    pending,
+    setPending,
   } = useGlobalContext();
 
   const inputTextHandler = (e) => {
@@ -31,16 +31,23 @@ const Form = () => {
 
   const submitTodoHandler = (e) => {
     e.preventDefault();
-    setTodoList([
-      ...todoList,
-      {
-        text: taskName,
-        completed: false,
-        id: uuidv4(),
-        date: deadline,
-        category: category,
-      },
-    ]);
+
+    const newTodo = {
+      text: taskName,
+      completed: false,
+      id: uuidv4(),
+      date: deadline,
+      category: category,
+    };
+
+    fetch("http://localhost:8000/todoList", {
+      method: "POST",
+      headers: { "Content-type": "application/json" },
+      body: JSON.stringify(newTodo),
+    }).then(() => {
+      setPending(!pending);
+    });
+
     setTaskName("");
     setDeadline("");
     setCategory("Personal");

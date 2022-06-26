@@ -7,7 +7,11 @@ const Todo = ({ id, text, date, category, completed }) => {
   const { todoList, setTodoList } = useGlobalContext();
 
   const deleteHandler = () => {
-    setTodoList(todoList.filter((element) => element.id !== id));
+    fetch(`http://localhost:8000/todoList/${id}`, {
+      method: "DELETE",
+    }).then(() => {
+      setPending(!pending);
+    });
   };
 
   const completeHandler = () => {

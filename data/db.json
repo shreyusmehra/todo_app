@@ -1,0 +1,11 @@
+{
+    "todoList":[
+        {
+            "text":"Task 1",
+            "completed":false,
+            "id":1,
+            "date":"2022-06-27",
+            "category":"College"
+        }
+    ]
+}

@@ -130,9 +130,11 @@ label{
 .completed-btn:hover {
     background-color: var(--green);
     color: var(--white);
+    cursor: pointer;
 }
 
 .delete-btn {
+    margin: 0px 0px 0px 5px;
     background-color: var(--white);
     color: var(--red);
     border: 2px solid var(--red);
@@ -145,6 +147,7 @@ label{
 .delete-btn:hover {
     background-color: var(--red);
     color: var(--white);
+    cursor: pointer;
 }
 
 .completed {
